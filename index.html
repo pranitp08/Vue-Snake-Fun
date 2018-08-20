@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Play Snake</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="game">
+	<div class="row" v-for="row in grid">
+		<div class="col" :class="{bam: col.isSnake, food: col.isFood}" 
+				v-for="col in row">	
+		</div>
+	</div>
+</div>
+<div class="below" id="stick">
+	<div class="info">
+		Play with Arrow Keys
+	</div>
+	<button class="main-btn" :class="{btnActive:isBtnActive}" type="button" @focus='handleFocus' @blur='handleBlur' @keydown.up.down.left.right='log($event)'>
+		{{btnMessage}}
+	</button>
+	<div v-if="message" class="message-box">
+		<span class="message">{{message}}</span>
+		<div>
+			<button class="reset-btn" @click=resetGame>Reset</button><br>
+			or<br>
+			<div class="just">Just Keep Playing</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script type="text/javascript" src="code.js"></script>
+</body>
+</html>
